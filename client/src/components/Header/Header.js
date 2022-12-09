@@ -7,10 +7,12 @@ const Header = () => {
     <header>
       <Navbar>
         <Container>
-          <Navbar.Brand href="/">CatBooks</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <i class="fa-solid fa-cat"></i>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+            <Nav className="ms-auto">
               <Nav.Link href="/cart">
                 <i className="fas fa-shopping-cart"></i>
               </Nav.Link>
