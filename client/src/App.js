@@ -9,7 +9,7 @@ const App = () => {
       <Header />
       <main>
         <Container>
-          <h1>Bookstore website</h1>
+          <h1>Bookstore</h1>
         </Container>
       </main>
       <Footer />
