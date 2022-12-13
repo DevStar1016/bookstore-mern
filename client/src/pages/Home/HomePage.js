@@ -1,12 +1,12 @@
 import React from "react";
 import books from "../../books";
 import Book from "../../components/Book/Book";
-import "./Home.css";
+import "./HomePage.css";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="home">
-      <h1>All Books</h1> 
+      <h1>All Books</h1>
       <div className="books">
         {books.map((book) => (
           <div className="book">
@@ -18,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

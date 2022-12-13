@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Book.css";
 
 const Book = ({ book }) => {
   return (
     <div className="card book">
-      <a href={`/book/${book._id}`}>
+      <Link to={`/book/${book._id}`}>
         <img src={book.image} alt="" className="card-img-top" />
-      </a>
+      </Link>
       <div className="card-body book-desc">
-        <a href={`/book/${book._id}`}>
+        <Link to={`/book/${book._id}`}>
           <div className="card-title">
             <strong>{book.name}</strong>
           </div>
@@ -18,7 +19,7 @@ const Book = ({ book }) => {
             </div>
           </div>
           <h3 className="card-text">${book.price}</h3>
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -59,6 +59,42 @@ const books = [
     rating: 4.5,
     numReview: 4,
   },
+  {
+    _id: "6",
+    name: "The Recognitions",
+    image: "/images/6.jpg",
+    author: "William Gaddis",
+    description:
+      "The book Jonathan Franzen dubbed the ur-text of postwar fiction and the first great cultural critique, which, even if Heller and Pynchon hadn't read it while composing Catch-22 and V., managed to anticipate the spirit of both”—The Recognitions is a masterwork about art and forgery, and the increasingly thin line between the counterfeit and the fake.",
+    price: "14.50",
+    genre: "Fiction",
+    rating: 4.2,
+    numReview: 4,
+  },
+  {
+    _id: "7",
+    name: "The Metamorphosis and Other Stories ",
+    image: "/images/7.jpg",
+    author: "Franz Kafka",
+    description:
+      "Virtually unknown during his lifetime, Franz Kafka is now one of the world’s most widely read and discussed authors. His nightmarish novels and short stories have come to symbolize modern man’s anxiety and alienation in a bizarre, hostile, and dehumanized world. This vision is most fully realized in Kafka’s masterpiece, “The Metamorphosis,” a story that is both harrowing and amusing, and a landmark of modern literature. ",
+    price: "14.50",
+    genre: "Fiction",
+    rating: 4.4,
+    numReview: 4,
+  },
+  {
+    _id: "8",
+    name: "Kafka on the Shore",
+    image: "/images/8.jpg",
+    author: "Franz Kafka",
+    description:
+      "Virtually unknown during his lifetime, Franz Kafka is now one of the world’s most widely read and discussed authors. His nightmarish novels and short stories have come to symbolize modern man’s anxiety and alienation in a bizarre, hostile, and dehumanized world. This vision is most fully realized in Kafka’s masterpiece, “The Metamorphosis,” a story that is both harrowing and amusing, and a landmark of modern literature. ",
+    price: "14.50",
+    genre: "Fiction",
+    rating: 4.4,
+    numReview: 4,
+  },
 ];
 
 export default books;
