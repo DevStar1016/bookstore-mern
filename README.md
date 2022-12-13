@@ -14,4 +14,14 @@
     - Thêm sản phẩm
     - Sửa sản phẩm
     - Xóa sản phẩm
-    
+- Backend:
+  - express
+  - react-router-dom
+  - nodemon
+  - concurrently
+- Database:
+  - MongoDB
+- Frontend:
+  - Bootstrap CDN (index.html) 
+  - Font Awesome CDN (index.html)
+  - react-router-dom
