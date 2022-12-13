@@ -1,0 +1,10 @@
+.book {
+  width: 260px;
+  height: 570px;
+  margin-right: 12px;
+  margin-bottom: 40px;
+}
+
+.book a {
+  text-decoration: none;
+}

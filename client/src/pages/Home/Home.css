@@ -1,0 +1,30 @@
+.home {
+  padding: 20px;
+}
+
+.home .books {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.books .book-desc {
+  background-color: #ede1d4;
+}
+
+.book-desc div {
+  background-color: #ede1d4;
+}
+
+.book-desc a {
+  background-color: #ede1d4;
+}
+
+.book-desc h3 {
+  background-color: #ede1d4;
+  color: #0e5540;
+}
+
+.book-desc strong {
+  background-color: #ede1d4;
+}
