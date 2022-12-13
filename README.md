@@ -1,4 +1,9 @@
 ## Bookstore using MongoDB, Express, React and Node
+
+- Để chạy app:
+  ```
+  npm run dev
+  ```
 - Các giao diện của trang:
   - Giao diện trang Home
   - Giao diện chi tiết sản phẩm
@@ -14,6 +19,7 @@
     - Thêm sản phẩm
     - Sửa sản phẩm
     - Xóa sản phẩm
+
 - Frontend:
   - Bootstrap CDN (index.html) 
   - Font Awesome CDN (index.html)
