@@ -1,26 +1,14 @@
 import React from "react";
 import "./Header.css";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import Navbar from "./Navbar";
 
 const Header = () => {
   return (
     <header>
-      <Navbar>
-        <Container>
-          <Navbar.Brand href="/">
-            <i class="fa-solid fa-cat fs-3"></i>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link href="/cart">
-                <i className="fas fa-shopping-cart"></i>
-              </Nav.Link>
-              <Nav.Link href="/login">Account</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <div className="website-logo">
+        <i className="fa-solid fa-cat"></i>
+      </div>
+      <Navbar />
     </header>
   );
 };

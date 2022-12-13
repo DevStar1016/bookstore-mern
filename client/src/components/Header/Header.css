@@ -1,3 +1,14 @@
 header {
-  background-color: #0e5540;
+  width: 100%;
+  height: 70px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #000;
+}
+
+header .website-logo i {
+  color: #000;
+  font-size: 32px;
 }

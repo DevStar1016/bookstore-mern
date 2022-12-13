@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import "./Footer.css";
 
 const Footer = () => {
-  return <footer></footer>;
+  return <footer>Copyright &copy; CatBooks</footer>;
 };
 
 export default Footer;

@@ -5,10 +5,10 @@
   margin: 0;
   padding: 0;
   color: #000;
+  background-color: #faeddf;
   font-family: "Poppins", sans-serif;
 }
 
 main {
   min-height: 80vh;
-  background-color: #faeddf;
 }

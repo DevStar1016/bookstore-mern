@@ -1,0 +1,29 @@
+nav {
+  float: right;
+  margin-top: 12px;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  list-style-type: none;
+  padding-right: 14px;
+}
+
+nav li a {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+  
+nav li a:hover {
+  color: #000;
+}
+
+nav li .cart-icon {
+  color: #000;
+  font-size: 24px;
+}
