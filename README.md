@@ -6,8 +6,10 @@
   ```
 - Các giao diện của trang:
   - Giao diện trang Home
-  - Giao diện chi tiết sản phẩm
   - Giao diện đăng ký, đăng nhập
+  - Giao diện chi tiết sản phẩm
+  - Giao diện giỏ hàng
+  - Giao diện thanh toán
   - Giao diện Admin
 - Các chức năng của trang:
   - Khách hàng:
