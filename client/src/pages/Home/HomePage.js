@@ -6,12 +6,14 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <div className="home">
-      <h1>All Books</h1>
+      <div className="title">
+        <h2>All Books</h2>
+        <p>Mua sách truyện tiếng Anh, sách ngoại văn.</p>
+      </div>
+
       <div className="books">
         {books.map((book) => (
-          <div className="book">
-            <Book book={book} />
-          </div>
+          <Book key={book._id} book={book} />
         ))}
       </div>
     </div>

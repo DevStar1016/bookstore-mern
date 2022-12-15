@@ -5,6 +5,31 @@
   margin-bottom: 40px;
 }
 
+.book:hover {
+  box-shadow: 10px 10px #0e5540;
+}
+
 .book a {
   text-decoration: none;
+}
+
+.book .book-desc {
+  background-color: #ede1d4;
+}
+
+.book-desc div {
+  background-color: #ede1d4;
+}
+
+.book-desc a {
+  background-color: #ede1d4;
+}
+
+.book-desc h3 {
+  background-color: #ede1d4;
+  color: #0e5540;
+}
+
+.book-desc strong {
+  background-color: #ede1d4;
 }
