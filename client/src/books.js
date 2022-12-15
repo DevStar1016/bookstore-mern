@@ -9,7 +9,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.5,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "2",
@@ -21,7 +21,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.7,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "3",
@@ -33,7 +33,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.3,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "4",
@@ -45,7 +45,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 3.7,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "5",
@@ -57,7 +57,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.5,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "6",
@@ -69,7 +69,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.2,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "7",
@@ -81,7 +81,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.4,
-    numReview: 4,
+    numReviews: 4,
   },
   {
     _id: "8",
@@ -93,7 +93,7 @@ const books = [
     price: "14.50",
     genre: "Fiction",
     rating: 4.4,
-    numReview: 4,
+    numReviews: 4,
   },
 ];
 

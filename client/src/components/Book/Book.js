@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Rating from "./Rating";
 import "./Book.css";
 
 const Book = ({ book }) => {
@@ -14,9 +15,7 @@ const Book = ({ book }) => {
             <strong>{book.name}</strong>
           </div>
           <div className="card-text">
-            <div className="my-3">
-              {book.rating} from {book.numReviews} reviews
-            </div>
+            <Rating value={book.rating} text={` ${book.numReviews} reviews`} />
           </div>
           <h3 className="card-text">${book.price}</h3>
         </Link>
