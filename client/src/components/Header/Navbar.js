@@ -7,10 +7,10 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/cart">Sign In</Link>
+          <Link to="/login">Sign In</Link>
         </li>
         <li>
-          <Link to="/login">
+          <Link to="/cart">
             <i className="fa-sharp fa-solid fa-cart-shopping cart-icon"></i>
           </Link>
         </li>
