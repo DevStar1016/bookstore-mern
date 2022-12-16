@@ -44,7 +44,7 @@ const BookDetail = () => {
             </div>
           </div>
           <button className="btn btn-add-to-cart">
-            Add to Cart | {book.price}
+            Add to Cart | ${book.price}
           </button>
         </div>
       </div>
