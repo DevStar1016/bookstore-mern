@@ -1,0 +1,41 @@
+.book-detail {
+  padding-top: 100px;
+  background-color: #faeddf;
+}
+
+.bg-color {
+  background: #faeddf;
+}
+
+.goback-btn {
+  width: 140px;
+  height: 45px;
+  margin-bottom: 21px;
+  background-color: #0e5540;
+  color: #faeddf;
+  padding: 10px 20px;
+}
+
+.goback-btn:hover {
+  border: 2px solid #0e5540;
+}
+
+.book-item {
+  margin: 50px 50px 100px;
+}
+
+.btn-add-to-cart {
+  padding: 4px 4px;
+  background-color: #0e5540;
+  width: 546px;
+  height: 45px;
+  margin-top: 9px;
+  border-radius: 7px;
+  color: #faeddf;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-add-to-cart:hover {
+  border: 2px solid #0e5540;
+}

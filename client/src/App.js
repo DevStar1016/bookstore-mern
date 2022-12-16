@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/HomePage";
-import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import BookDetail from "./pages/BookDetail/BookDetail";
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/book/:id" element={<ProductDetail />} />
+            <Route path="/book/:id" element={<BookDetail />} />
           </Routes>
         </main>
         <Footer />

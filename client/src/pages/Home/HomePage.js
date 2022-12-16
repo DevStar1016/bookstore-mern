@@ -1,9 +1,21 @@
-import React from "react";
-import books from "../../books";
+import React, { useState, useEffect } from "react";
 import Book from "../../components/Book/Book";
+import axios from "axios";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const { data } = await axios.get("/api/books");
+
+      setBooks(data);
+    };
+
+    fetchBooks();
+  }, []);
+
   return (
     <div className="home">
       <div className="title">
