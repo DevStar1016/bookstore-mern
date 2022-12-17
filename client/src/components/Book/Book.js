@@ -15,7 +15,11 @@ const Book = ({ book }) => {
             <strong>{book.name}</strong>
           </div>
           <div className="card-text">
-            <Rating value={book.rating} text={` ${book.numReviews} reviews`} />
+            <Rating
+              value={book.rating}
+              text={` ${book.numReviews} reviews`}
+              color={"#ede1d4"}
+            />
           </div>
           <h3 className="card-text">${book.price}</h3>
         </Link>

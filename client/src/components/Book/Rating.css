@@ -2,11 +2,6 @@
   margin: 10px 0 20px;
 }
 
-.rating span {
-  background-color: #ede1d4;
-}
-
 .rating .star i {
-  background-color: #ede1d4;
   color: #0e5540;
 }
