@@ -15,9 +15,7 @@ const BookDetail = () => {
     };
 
     fetchBook();
-
-    // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   return (
     <div className="container book-detail">
