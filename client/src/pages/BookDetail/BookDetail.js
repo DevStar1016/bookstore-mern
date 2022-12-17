@@ -19,7 +19,7 @@ const BookDetail = () => {
 
   return (
     <div className="container book-detail">
-      <Link className="btn goback-btn" to="/">
+      <Link className="btn back-btn" to="/">
         Go Back
       </Link>
       <div className="row book-item">
