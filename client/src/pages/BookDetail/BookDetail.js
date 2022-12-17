@@ -34,7 +34,11 @@ const BookDetail = () => {
               <h3>{book.name}</h3>
             </div>
             <div className="list-group-item bg-color">
-              <Rating value={book.rating} text={`${book.numReviews} reviews`} />
+              <Rating
+                value={book.rating}
+                text={` ${book.numReviews} reviews`}
+                color={"#faeddf"}
+              />
             </div>
             <div className="list-group-item bg-color">
               <strong>Price:</strong> ${book.price}
