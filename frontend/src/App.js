@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/HomePage";
 import BookDetail from "./pages/BookDetail/BookDetail";
+import Cart from "./pages/Cart/Cart";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} exact />
             <Route path="/book/:id" element={<BookDetail />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </main>
         <Footer />

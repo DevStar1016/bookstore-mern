@@ -11,7 +11,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/cart">
-            <i className="fa-sharp fa-solid fa-cart-shopping cart-icon"></i>
+            <i className="fa-sharp fa-solid fa-cart-shopping cart-icon" />
           </Link>
         </li>
       </ul>
