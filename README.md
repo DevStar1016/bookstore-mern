@@ -13,7 +13,7 @@
   - Giao diện Admin
 - Các chức năng của trang:
   - Khách hàng:
-    - Khách hàng đăng ký, đăng nhập
+    - Khách hàng đăng ký, đăng nhập.
     - Khánh hàng có thể thêm sản phẩm vào giỏ hàng
     - Khách hàng thanh toán sản phẩm
     - Khách hàng có thể viết review về sản phẩm
