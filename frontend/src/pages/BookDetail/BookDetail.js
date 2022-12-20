@@ -45,9 +45,7 @@ const BookDetail = () => {
               <strong>Description:</strong> {book.description}
             </div>
           </div>
-          <button className="btn btn-add-to-cart">
-            Add to Cart | {book.price}
-          </button>
+          <button className="btn btn-add-to-cart">Thêm vào giỏ hàng</button>
         </div>
       </div>
     </div>

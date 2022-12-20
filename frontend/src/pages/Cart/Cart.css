@@ -1,0 +1,17 @@
+.cart {
+  padding: 100px 50px;
+}
+
+.checkout-btn {
+  width: 140px;
+  height: 45px;
+  margin-bottom: 21px;
+  background-color: #0e5540;
+  color: #faeddf;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.checkout-btn:hover {
+  border: 2px solid #0e5540;
+}
