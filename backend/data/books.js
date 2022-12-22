@@ -1,6 +1,5 @@
 const books = [
   {
-    _id: "1",
     name: "One Hundred Years of Solitude",
     image: "/images/1.jpg",
     description:
@@ -12,7 +11,6 @@ const books = [
     numReviews: 4,
   },
   {
-    _id: "2",
     name: "Pale Fire",
     image: "/images/2.jpg",
     description:
@@ -24,7 +22,6 @@ const books = [
     numReviews: 5,
   },
   {
-    _id: "3",
     name: "The Master and Margarita",
     image: "/images/3.jpg",
     description:
@@ -36,7 +33,6 @@ const books = [
     numReviews: 4,
   },
   {
-    _id: "4",
     name: "Ulysses",
     image: "/images/4.jpg",
     author: "James Joyce",
@@ -48,7 +44,6 @@ const books = [
     numReviews: 4,
   },
   {
-    _id: "5",
     name: "1984",
     image: "/images/5.jpg",
     author: "George Orwell",
@@ -60,7 +55,6 @@ const books = [
     numReviews: 4,
   },
   {
-    _id: "6",
     name: "The Recognitions",
     image: "/images/6.jpg",
     author: "William Gaddis",
@@ -72,7 +66,6 @@ const books = [
     numReviews: 3,
   },
   {
-    _id: "7",
     name: "The Metamorphosis and Other Stories",
     image: "/images/7.jpg",
     author: "Franz Kafka",
@@ -84,7 +77,6 @@ const books = [
     numReviews: 4,
   },
   {
-    _id: "8",
     name: "Kafka on the Shore",
     image: "/images/8.jpg",
     author: "Franz Kafka",
@@ -97,4 +89,4 @@ const books = [
   },
 ];
 
-module.exports = books;
+module.exports = { books };
