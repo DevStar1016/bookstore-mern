@@ -2,12 +2,12 @@
   padding: 20px;
 }
 
-.home .title {
+.title {
   margin: 150px 0 60px;
   text-align: center;
 }
 
-.home .books {
+.books {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
