@@ -3,21 +3,39 @@
 }
 
 .cart {
-  padding: 150px 200px;
+  padding: 150px 200px 150px 100px;
+  width: 100%;
+}
+
+.cart h2 {
+  margin-bottom: 24px;
+}
+
+.cart .cart-item {
+  margin-right: 60px;
+}
+
+.cart .cart-item a {
+  color: #000;
+}
+
+.cart .cart-item a:hover {
+  color: #0e5540;
 }
 
 .checkout-group {
   width: 400px;
   background-color: #faeddf;
+  margin-top: 64px;
 }
 
 .checkout-btn {
   width: 365px;
   height: 45px;
-  margin: 20px 0 21px;
+  /* margin: 20px 0 21px; */
   background-color: #0e5540;
   color: #faeddf;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   font-weight: 600;
 }
 
