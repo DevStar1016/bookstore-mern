@@ -25,10 +25,11 @@
   - Bootstrap CDN (index.html) 
   - Font Awesome CDN (index.html)
   - react-router-dom
+  - redux
 - Backend:
   - express
-  - react-router-dom
   - nodemon
   - concurrently
+  - Mongoose
 - Database:
   - MongoDB
