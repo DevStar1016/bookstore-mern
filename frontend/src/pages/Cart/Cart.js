@@ -52,10 +52,10 @@ const Cart = () => {
                       alt={item.name}
                     />
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-5">
                     <Link to={`/book/${item.book}`}>{item.name}</Link>
                   </div>
-                  <div className="col-md-2">${item.price}</div>
+                  <div className="col-md-3">${item.price}</div>
                   <div className="col-md-2">
                     <button
                       className="btn btn-light"
