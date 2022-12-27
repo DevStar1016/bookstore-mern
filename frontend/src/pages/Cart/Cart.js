@@ -52,10 +52,25 @@ const Cart = () => {
                       alt={item.name}
                     />
                   </div>
-                  <div className="col-md-5">
+                  <div className="col-md-3">
                     <Link to={`/book/${item.book}`}>{item.name}</Link>
                   </div>
-                  <div className="col-md-3">${item.price}</div>
+                  <div className="col-md-2">${item.price}</div>
+                  <div className="col-md-3">
+                    <select
+                      className="form-control"
+                      value={item.qty}
+                      onChange={(e) =>
+                        dispatch(addToCart(item.book, Number(e.target.value)))
+                      }
+                    >
+                      {[...Array(item.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div className="col-md-2">
                     <button
                       className="btn btn-light"

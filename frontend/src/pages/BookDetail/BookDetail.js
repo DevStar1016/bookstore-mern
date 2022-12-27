@@ -56,32 +56,36 @@ const BookDetail = () => {
               <div className="list-group-item bg-color">
                 <strong>Price:</strong> ${book.price}
               </div>
+              <div className="list-group-item bg-color">
+                <strong>Status:</strong>{" "}
+                {book.countInStock > 0 ? "In Stock" : "Out of Stock"}
+              </div>
+              <div className="list-group-item bg-color">
+                <strong>Qty: </strong>
 
-              {/* <div className="list-group-item">
-                <div className="row">
-                  <div className="col">Qty</div>
-                  <div className="col">
-                    <select
-                      className="form-control"
-                      value={qty}
-                      onChange={(e) => setQty(e.target.value)}
-                    >
-                      {[...Array(book.name).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div> */}
+                <select
+                  className="form-control"
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                >
+                  {[...Array(book.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               <div className="list-group-item bg-color">
                 <strong>Description:</strong> {book.description}
               </div>
             </div>
-            <button className="btn btn-add-to-cart" onClick={addToCartHandler}>
-              Thêm vào giỏ hàng
+            <button
+              className="btn btn-add-to-cart"
+              onClick={addToCartHandler}
+              disabled={book.countInStock === 0}
+            >
+              Add To Cart
             </button>
           </div>
         </div>

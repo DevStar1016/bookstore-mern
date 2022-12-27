@@ -25,6 +25,11 @@
   margin: 50px 50px 100px;
 }
 
+.book-item select {
+  display: inline;
+  width: 100px;
+}
+
 .btn-add-to-cart {
   padding: 4px 4px;
   background-color: #0e5540;
