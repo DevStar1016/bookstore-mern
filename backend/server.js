@@ -1,12 +1,12 @@
 const express = require("express");
-// const dotenv = require("dotenv");
+const dotenv = require("dotenv");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const { connectDB } = require("./config/db");
 
 const bookRoutes = require("./routes/bookRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-// dotenv.config();
+dotenv.config();
 
 connectDB();
 
