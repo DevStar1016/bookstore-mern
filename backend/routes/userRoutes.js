@@ -5,10 +5,10 @@ const {
   registerUser,
   getUserProfile,
 } = require("../controllers/userController");
-const { project } = require("../middlewares/authMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
 
 router.post("/", registerUser);
 router.post("/login", authUser);
-router.get("/profile", project, getUserProfile);
+router.get("/profile", protect, getUserProfile);
 
 module.exports = router;
