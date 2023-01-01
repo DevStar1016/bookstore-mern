@@ -18,34 +18,37 @@ const Navbar = () => {
       <ul>
         <li>
           <Link to="/cart">
-            <i className="fa-sharp fa-solid fa-cart-shopping cart-icon" />
+            <i className="fa-sharp fa-solid fa-cart-shopping cart-icon mt-2 me-3" />
           </Link>
         </li>
         {userInfo ? (
-          <div class="dropdown" id="username">
+          <div className="dropdown dropdown-nav" id="username">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle dropdown-button bg-nav-color"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               {userInfo.name}
             </button>
-            <ul class="dropdown-menu">
-              <li>
-                <Link to="/profile" className="dropdown-item">
+            <ul className="dropdown-menu bg-nav-color">
+              <li className="bg-nav-color">
+                <Link to="/profile" className="dropdown-item bg-nav-color">
                   Profile
                 </Link>
               </li>
-              <li>
-                <div className="dropdown-item" onClick={logoutHandler}>
+              <li className="bg-nav-color">
+                <div
+                  className="dropdown-item bg-nav-color"
+                  onClick={logoutHandler}
+                >
                   Logout
                 </div>
               </li>
             </ul>
           </div>
         ) : (
-          <li>
+          <li className="mt-2">
             <Link to="/login">Sign In</Link>
           </li>
         )}
