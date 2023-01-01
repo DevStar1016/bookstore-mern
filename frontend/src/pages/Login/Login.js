@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
@@ -17,10 +17,19 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(login(email, password));
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
 
   return (
     <FormContainer>
+      {error && <Message varian="alert-danger">{error}</Message>}
+      {loading && <Loader />}
       <h1 className="text-center green-color">Login</h1>
       <form onSubmit={submitHandler}>
         <div className="form-group">
