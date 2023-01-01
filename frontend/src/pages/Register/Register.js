@@ -4,34 +4,51 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import FormContainer from "../../components/FormContainer/FormContainer";
-import { login } from "../../actions/userActions";
-import "./Login.css";
+import { register } from "../../actions/userActions";
+import "./Register.css";
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
-  };
-
-  useEffect(() => {
-    if (userInfo) {
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+    } else {
+      dispatch(register(name, email, password));
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  };
 
   return (
     <FormContainer>
+      {message && <Message varian="alert-danger">{message}</Message>}
       {error && <Message varian="alert-danger">{error}</Message>}
       {loading && <Loader />}
-      <h1 className="text-center green-color">Login</h1>
+      <h1 className="text-center green-color">Register</h1>
       <form onSubmit={submitHandler}>
+        <div className="form-group">
+          <label className="form-label" htmlFor="name">
+            Name:
+          </label>
+          <input
+            type="text"
+            className="form-control p-3"
+            id="name"
+            placeholder="Enter name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
         <div className="form-group">
           <label className="form-label" htmlFor="email">
             Email:
@@ -59,13 +76,27 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn login-btn">
-          Log In
+
+        <div className="form-group">
+          <label className="form-label mt-3" htmlFor="confirmPassword">
+            Confirm Password:
+          </label>
+          <input
+            type="password"
+            className="form-control p-3"
+            id="password"
+            placeholder="Confirm password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn register-btn">
+          Register
         </button>
         <div className="row py-3">
           <div className="col">
-            <Link to="/register" className="green-color">
-              Don't have account? Click here
+            <Link to="/login" className="green-color">
+              You Have an Account? Click here to login
             </Link>
           </div>
         </div>
@@ -74,4 +105,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
