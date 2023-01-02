@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
-import { getUserDetails } from "../../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../../actions/userActions";
 import "./Profile.css";
 
 const Profile = () => {
@@ -20,6 +20,8 @@ const Profile = () => {
   const { loading, error, user } = userDetails;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -39,7 +41,7 @@ const Profile = () => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      //   Dispatch update profile
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
@@ -48,6 +50,7 @@ const Profile = () => {
       <div className="col-md-3 m-5 pt-5">
         {message && <Message varian="alert-danger">{message}</Message>}
         {error && <Message varian="alert-danger">{error}</Message>}
+        {success && <Message varian="alert-success">Profile Updated</Message>}
         {loading && <Loader />}
         <h2 className="text-center green-color">User Profile</h2>
         <form onSubmit={submitHandler}>
