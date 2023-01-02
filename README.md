@@ -31,5 +31,6 @@
   - nodemon
   - concurrently
   - Mongoose
+  - jsonwebtoken
 - Database:
   - MongoDB
