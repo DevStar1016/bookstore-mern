@@ -50,7 +50,7 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label className="form-label" htmlFor="email">
+          <label className="form-label mt-3" htmlFor="email">
             Email:
           </label>
           <input

@@ -8,6 +8,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import UserList from "./pages/UserList/UserList";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/book/:id" element={<BookDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/cart/:id" element={<Cart />} />
+            <Route path="/admin/userlist" element={<UserList />} />
             <Route path="/" element={<Home />} exact />
           </Routes>
         </main>
