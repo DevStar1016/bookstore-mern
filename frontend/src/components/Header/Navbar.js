@@ -52,6 +52,40 @@ const Navbar = () => {
             <Link to="/login">Sign In</Link>
           </li>
         )}
+        {userInfo && userInfo.isAdmin && (
+          <div className="dropdown dropdown-nav ms-4 me-4" id="admin-menu">
+            <button
+              className="btn btn-secondary dropdown-toggle dropdown-button bg-nav-color"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Admin
+            </button>
+            <ul className="dropdown-menu bg-nav-color">
+              <li className="bg-nav-color">
+                <Link
+                  to="/admin/userlist"
+                  className="dropdown-item bg-nav-color"
+                >
+                  Users
+                </Link>
+                <Link
+                  to="/admin/booklist"
+                  className="dropdown-item bg-nav-color"
+                >
+                  Books
+                </Link>
+                <Link
+                  to="/admin/orderlist"
+                  className="dropdown-item bg-nav-color"
+                >
+                  Orders
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </ul>
     </nav>
   );
