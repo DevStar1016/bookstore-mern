@@ -38,7 +38,7 @@ const Login = () => {
           </label>
           <input
             type="email"
-            className="form-control p-3"
+            className="form-control p-3 mb-2"
             id="email"
             placeholder="Enter email"
             value={email}
