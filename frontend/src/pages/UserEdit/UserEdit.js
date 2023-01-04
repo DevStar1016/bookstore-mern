@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import FormContainer from "../../components/FormContainer/FormContainer";
-import { getUserDetails } from "../../actions/userActions";
+import { getUserDetails, updateUser } from "../../actions/userActions";
+import { USER_UPDATE_RESET } from "../../constants/userConstants";
 import "./UserEdit.css";
 
 const UserEdit = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -18,18 +21,31 @@ const UserEdit = () => {
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate;
+
   useEffect(() => {
-    if (!user.name || user._id !== id) {
-      dispatch(getUserDetails(id));
+    if (successUpdate) {
+      dispatch({ type: USER_UPDATE_RESET });
+      navigate("/admin/userlist");
     } else {
-      setName(user.name);
-      setEmail(user.email);
-      setIsAdmin(user.isAdmin);
+      if (!user.name || user._id !== id) {
+        dispatch(getUserDetails(id));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+        setIsAdmin(user.isAdmin);
+      }
     }
-  }, [user, id, dispatch]);
+  }, [user, id, dispatch, navigate, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(updateUser({ _id: id, name, email, isAdmin }));
   };
 
   return (
@@ -39,10 +55,12 @@ const UserEdit = () => {
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="alert-danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
-          <Message varian="alert-danger">{error}</Message>
+          <Message variant="alert-danger">{error}</Message>
         ) : (
           <form onSubmit={submitHandler}>
             <div className="form-group">
@@ -79,13 +97,13 @@ const UserEdit = () => {
                   className="form-check-input"
                   type="checkbox"
                   checked={isAdmin}
-                  onChange={(e) => setIsAdmin(e.target.value)}
+                  onChange={(e) => setIsAdmin(e.target.checked)}
                 />
                 <label className="form-check-label">Is Admin</label>
               </div>
             </div>
 
-            <button type="submit" className="btn register-btn">
+            <button type="submit" className="btn userEdit-btn">
               Update
             </button>
           </form>

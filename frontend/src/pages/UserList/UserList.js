@@ -38,7 +38,7 @@ const UserList = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message varian={"alert-danger"}>{error}</Message>
+        <Message variant={"alert-danger"}>{error}</Message>
       ) : (
         <table className="table table-bordered table-striped table-hover table-responsive table-sm">
           <thead>
