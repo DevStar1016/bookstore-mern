@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <FormContainer>
-      {error && <Message varian="alert-danger">{error}</Message>}
+      {error && <Message variant="alert-danger">{error}</Message>}
       {loading && <Loader />}
       <h1 className="text-center green-color">Login</h1>
       <form onSubmit={submitHandler}>

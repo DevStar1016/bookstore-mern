@@ -25,7 +25,7 @@ const HomePage = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message varian="alert-danger">{error}</Message>
+        <Message variant="alert-danger">{error}</Message>
       ) : (
         <div className="books">
           {books.map((book) => (

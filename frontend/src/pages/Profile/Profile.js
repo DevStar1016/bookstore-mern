@@ -48,9 +48,9 @@ const Profile = () => {
   return (
     <div className="row profile">
       <div className="col-md-3 m-5 pt-5">
-        {message && <Message varian="alert-danger">{message}</Message>}
-        {error && <Message varian="alert-danger">{error}</Message>}
-        {success && <Message varian="alert-success">Profile Updated</Message>}
+        {message && <Message variant="alert-danger">{message}</Message>}
+        {error && <Message variant="alert-danger">{error}</Message>}
+        {success && <Message variant="alert-success">Profile Updated</Message>}
         {loading && <Loader />}
         <h2 className="text-center green-color">User Profile</h2>
         <form onSubmit={submitHandler}>
