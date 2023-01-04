@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
-import { listUsers } from "../../actions/userActions";
+import { listUsers, deleteUser } from "../../actions/userActions";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -15,15 +15,22 @@ const UserList = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
       negative("/login");
     }
-  }, [dispatch, userInfo, negative]);
+  }, [dispatch, userInfo, negative, successDelete]);
 
-  const deleteHandler = () => {};
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   return (
     <div className="p-5">
@@ -66,7 +73,7 @@ const UserList = () => {
                   </Link>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => deleteHandler(user.id)}
+                    onClick={() => deleteHandler(user._id)}
                   >
                     <i className="fas fa-trash" />
                   </button>
