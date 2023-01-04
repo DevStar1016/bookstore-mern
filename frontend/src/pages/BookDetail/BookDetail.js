@@ -35,14 +35,14 @@ const BookDetail = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message varian="alert-danger">{error}</Message>
+        <Message variant="alert-danger">{error}</Message>
       ) : (
         <div className="row book-item">
           <div className="col md-6 book-img bg-color">
             <img src={book.image} alt={book.name} className="img-fluid" />
           </div>
           <div className="col md-3 bg-color">
-            <div className="list-group" varian="flush">
+            <div className="list-group">
               <div className="list-group-item bg-color">
                 <h3>{book.name}</h3>
               </div>

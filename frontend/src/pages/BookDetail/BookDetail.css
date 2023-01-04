@@ -1,5 +1,4 @@
 .book-detail {
-  padding-top: 100px;
   background-color: #faeddf;
 }
 
@@ -7,7 +6,7 @@
   background: #faeddf;
 }
 
-.back-btn {
+.book-detail .back-btn {
   width: 140px;
   height: 45px;
   margin-bottom: 21px;

@@ -30,8 +30,8 @@ const Register = () => {
 
   return (
     <FormContainer>
-      {message && <Message varian="alert-danger">{message}</Message>}
-      {error && <Message varian="alert-danger">{error}</Message>}
+      {message && <Message variant="alert-danger">{message}</Message>}
+      {error && <Message variant="alert-danger">{error}</Message>}
       {loading && <Loader />}
       <h1 className="text-center green-color">Register</h1>
       <form onSubmit={submitHandler}>

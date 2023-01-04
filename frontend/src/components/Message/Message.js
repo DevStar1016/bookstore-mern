@@ -1,13 +1,13 @@
 import React from "react";
 
-const Message = ({ varian, children }) => {
-  let alert = `alert ${varian}`;
+const Message = ({ variant, children }) => {
+  let alert = `alert ${variant}`;
 
   return <div className={alert}>{children}</div>;
 };
 
 Message.defaultProps = {
-  varian: "alert-info",
+  variant: "alert-info",
 };
 
 export default Message;

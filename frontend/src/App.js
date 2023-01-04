@@ -9,6 +9,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import UserList from "./pages/UserList/UserList";
+import UserEdit from "./pages/UserEdit/UserEdit";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/cart/:id" element={<Cart />} />
             <Route path="/admin/userlist" element={<UserList />} />
+            <Route path="/admin/user/:id/edit" element={<UserEdit />} />
             <Route path="/" element={<Home />} exact />
           </Routes>
         </main>
