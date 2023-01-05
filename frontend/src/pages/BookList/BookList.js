@@ -41,7 +41,7 @@ const BookList = () => {
     }
 
     if (successCreate) {
-      navigate(`/admin/booklist/${createdBook._id}/edit`);
+      navigate(`/admin/book/${createdBook._id}/edit`);
     } else {
       dispatch(listBooks());
     }

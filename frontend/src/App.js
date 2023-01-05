@@ -11,6 +11,7 @@ import Profile from "./pages/Profile/Profile";
 import UserList from "./pages/UserList/UserList";
 import UserEdit from "./pages/UserEdit/UserEdit";
 import BookList from "./pages/BookList/BookList";
+import BookEdit from "./pages/BookEdit/BookEdit";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/admin/userlist" element={<UserList />} />
             <Route path="/admin/user/:id/edit" element={<UserEdit />} />
             <Route path="/admin/booklist" element={<BookList />} />
+            <Route path="/admin/book/:id/edit" element={<BookEdit />} />
             <Route path="/" element={<Home />} exact />
           </Routes>
         </main>
