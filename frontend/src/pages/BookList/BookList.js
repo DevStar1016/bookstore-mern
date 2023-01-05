@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
-import { listBooks } from "../../actions/bookActions";
+import { listBooks, deleteBook } from "../../actions/bookActions";
 import "./BookList.css";
 
 const BookList = () => {
@@ -14,6 +14,13 @@ const BookList = () => {
   const bookList = useSelector((state) => state.bookList);
   const { loading, error, books } = bookList;
 
+  const bookDelete = useSelector((state) => state.bookDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = bookDelete;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -23,11 +30,11 @@ const BookList = () => {
     } else {
       negative("/login");
     }
-  }, [dispatch, userInfo, negative]);
+  }, [dispatch, userInfo, negative, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
-      console.log("delete");
+      dispatch(deleteBook(id));
     }
   };
 
@@ -42,12 +49,13 @@ const BookList = () => {
           <h1>Books</h1>
           <div className="col text-right">
             <button className="btn add-book-btn" onClick={createBookHandler}>
-             
               Create Book
             </button>
           </div>
         </div>
       </div>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
