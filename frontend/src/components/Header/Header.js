@@ -8,7 +8,7 @@ const Header = () => {
     <header>
       <div className="website-logo">
         <Link to="/">
-          <i className="fa-solid fa-cat"></i>
+          <i className="fa-solid fa-book-open"></i>
         </Link>
       </div>
       <Navbar />
