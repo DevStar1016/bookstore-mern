@@ -8,6 +8,10 @@ import {
   BOOK_DELETE_REQUEST,
   BOOK_DELETE_SUCCESS,
   BOOK_DELETE_FAIL,
+  BOOK_CREATE_REQUEST,
+  BOOK_CREATE_SUCCESS,
+  BOOK_CREATE_FAIL,
+  BOOK_CREATE_RESET,
 } from "../constants/bookConstants";
 
 export const bookListReducer = (state = { books: [] }, action) => {
@@ -47,6 +51,21 @@ export const bookDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case BOOK_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const bookCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BOOK_CREATE_REQUEST:
+      return { loading: true };
+    case BOOK_CREATE_SUCCESS:
+      return { loading: false, success: true, book: action.payload };
+    case BOOK_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case BOOK_CREATE_RESET:
+      return {};
     default:
       return state;
   }

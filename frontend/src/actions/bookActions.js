@@ -9,6 +9,9 @@ import {
   BOOK_DELETE_REQUEST,
   BOOK_DELETE_SUCCESS,
   BOOK_DELETE_FAIL,
+  BOOK_CREATE_REQUEST,
+  BOOK_CREATE_SUCCESS,
+  BOOK_CREATE_FAIL,
 } from "../constants/bookConstants";
 
 export const listBooks = () => async (dispatch) => {
@@ -65,6 +68,32 @@ export const deleteBook = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: BOOK_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const createBook = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: BOOK_CREATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+
+    const { data } = await axios.post(`/api/books`, {}, config);
+
+    dispatch({ type: BOOK_CREATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: BOOK_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

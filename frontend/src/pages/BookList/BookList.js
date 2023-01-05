@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
-import { listBooks, deleteBook } from "../../actions/bookActions";
+import { listBooks, deleteBook, createBook } from "../../actions/bookActions";
+import { BOOK_CREATE_RESET } from "../../constants/bookConstants";
 import "./BookList.css";
 
 const BookList = () => {
   const dispatch = useDispatch();
-  const negative = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const bookList = useSelector((state) => state.bookList);
@@ -21,16 +22,30 @@ const BookList = () => {
     success: successDelete,
   } = bookDelete;
 
+  const bookCreate = useSelector((state) => state.bookCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    book: createdBook,
+  } = bookCreate;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listBooks());
-    } else {
-      negative("/login");
+    dispatch({ type: BOOK_CREATE_RESET });
+
+    if (!userInfo.isAdmin) {
+      navigate("/login");
     }
-  }, [dispatch, userInfo, negative, successDelete]);
+
+    if (successCreate) {
+      navigate(`/admin/booklist/${createdBook._id}/edit`);
+    } else {
+      dispatch(listBooks());
+    }
+  }, [dispatch, userInfo, navigate, successDelete, successCreate, createdBook]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
@@ -38,8 +53,8 @@ const BookList = () => {
     }
   };
 
-  const createBookHandler = (book) => {
-    console.log("add");
+  const createBookHandler = () => {
+    dispatch(createBook());
   };
 
   return (
@@ -56,6 +71,8 @@ const BookList = () => {
       </div>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
