@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
@@ -5,6 +6,7 @@ const { connectDB } = require("./config/db");
 
 const bookRoutes = require("./routes/bookRoutes");
 const userRoutes = require("./routes/userRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 dotenv.config();
 
@@ -20,6 +22,10 @@ app.get("/", (req, res) => {
 
 app.use("/api/books", bookRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/upload", uploadRoutes);
+
+// const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
 app.use(errorHandler);

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +20,7 @@ const BookEdit = () => {
   const [genre, setGenre] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -50,6 +52,31 @@ const BookEdit = () => {
       }
     }
   }, [dispatch, id, book, navigate, successUpdate]);
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -122,6 +149,18 @@ const BookEdit = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               />
+              <form>
+                <div className="form-group">
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    id="image-file"
+                    custom
+                    onChange={uploadFileHandler}
+                  />
+                </div>
+              </form>
+              {uploading && <Loader />}
             </div>
 
             <div className="form-group mb-2">
