@@ -84,7 +84,7 @@ export const bookUpdateReducer = (state = { book: {} }, action) => {
     case BOOK_UPDATE_FAIL:
       return { loading: false, error: action.payload };
     case BOOK_UPDATE_RESET:
-      return { book: {} };
+      return { product: {} };
     default:
       return state;
   }
