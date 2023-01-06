@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import FormContainer from "../../components/FormContainer/FormContainer";
-import { listBookDetails } from "../../actions/bookActions";
+import { listBookDetails, updateBook } from "../../actions/bookActions";
+import { BOOK_CREATE_RESET } from "../../constants/bookConstants";
 import "./BookEdit.css";
 
 const BookEdit = () => {
@@ -24,32 +25,57 @@ const BookEdit = () => {
   const bookDetails = useSelector((state) => state.bookDetails);
   const { loading, error, book } = bookDetails;
 
+  const bookUpdate = useSelector((state) => state.bookUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = bookUpdate;
+
   useEffect(() => {
-    if (!book.name || book._id !== id) {
-      dispatch(listBookDetails(id));
+    if (successUpdate) {
+      dispatch({ type: BOOK_CREATE_RESET });
+      navigate("/admin/booklist");
     } else {
-      setName(book.name);
-      setPrice(book.price);
-      setImage(book.image);
-      setAuthor(book.author);
-      setGenre(book.genre);
-      setCountInStock(book.countInStock);
-      setDescription(book.description);
+      if (!book.name || book._id !== id) {
+        dispatch(listBookDetails(id));
+      } else {
+        setName(book.name);
+        setPrice(book.price);
+        setImage(book.image);
+        setAuthor(book.author);
+        setGenre(book.genre);
+        setCountInStock(book.countInStock);
+        setDescription(book.description);
+      }
     }
-  }, [dispatch, id, book]);
+  }, [dispatch, id, book, navigate, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // Update
+    dispatch(
+      updateBook({
+        _id: id,
+        name,
+        price,
+        image,
+        author,
+        genre,
+        countInStock,
+        description,
+      })
+    );
   };
 
   return (
     <>
-      <Link to="admin/booklist" className="btn back-btn">
+      <Link className="btn back-btn" to="/admin/userlist">
         Go Back
       </Link>
       <FormContainer>
         <h1>Edit Book</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (

@@ -12,6 +12,9 @@ import {
   BOOK_CREATE_REQUEST,
   BOOK_CREATE_SUCCESS,
   BOOK_CREATE_FAIL,
+  BOOK_UPDATE_REQUEST,
+  BOOK_UPDATE_SUCCESS,
+  BOOK_UPDATE_FAIL,
 } from "../constants/bookConstants";
 
 export const listBooks = () => async (dispatch) => {
@@ -94,6 +97,37 @@ export const createBook = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: BOOK_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateBook = (book) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: BOOK_UPDATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/books/${book._id}`, book, config);
+
+    dispatch({ type: BOOK_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: BOOK_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

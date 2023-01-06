@@ -12,6 +12,10 @@ import {
   BOOK_CREATE_SUCCESS,
   BOOK_CREATE_FAIL,
   BOOK_CREATE_RESET,
+  BOOK_UPDATE_REQUEST,
+  BOOK_UPDATE_SUCCESS,
+  BOOK_UPDATE_FAIL,
+  BOOK_UPDATE_RESET,
 } from "../constants/bookConstants";
 
 export const bookListReducer = (state = { books: [] }, action) => {
@@ -66,6 +70,21 @@ export const bookCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case BOOK_CREATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const bookUpdateReducer = (state = { book: {} }, action) => {
+  switch (action.type) {
+    case BOOK_UPDATE_REQUEST:
+      return { loading: true };
+    case BOOK_UPDATE_SUCCESS:
+      return { loading: false, success: true, book: action.payload };
+    case BOOK_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case BOOK_UPDATE_RESET:
+      return { book: {} };
     default:
       return state;
   }
