@@ -6,10 +6,7 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import FormContainer from "../../components/FormContainer/FormContainer";
 import { listBookDetails, updateBook } from "../../actions/bookActions";
-import {
-  BOOK_CREATE_RESET,
-  BOOK_UPDATE_RESET,
-} from "../../constants/bookConstants";
+import { BOOK_UPDATE_RESET } from "../../constants/bookConstants";
 import "./BookEdit.css";
 
 const BookEdit = () => {
@@ -72,8 +69,9 @@ const BookEdit = () => {
       };
 
       const { data } = await axios.post("/api/upload", formData, config);
-
+      console.log(data);
       setImage(data);
+
       setUploading(false);
     } catch (error) {
       console.error(error);
@@ -105,7 +103,7 @@ const BookEdit = () => {
       <FormContainer>
         <h1>Edit Book</h1>
         {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+        {errorUpdate && <Message variant="alert-danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -152,17 +150,13 @@ const BookEdit = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               />
-              <form>
-                <div className="form-group">
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="image-file"
-                    custom
-                    onChange={uploadFileHandler}
-                  />
-                </div>
-              </form>
+              <input
+                className="form-control"
+                type="file"
+                id="image-file"
+                onChange={uploadFileHandler}
+              />
+
               {uploading && <Loader />}
             </div>
 

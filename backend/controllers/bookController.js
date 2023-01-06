@@ -44,15 +44,15 @@ const deleteBook = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createBook = asyncHandler(async (req, res) => {
   const book = new Book({
-    name: "Test",
+    name: "No name",
     price: 0,
     user: req.user._id,
-    image: "/images/8.jpg",
-    author: "godot",
-    genre: "Fiction",
+    image: "/images/sample.jpg",
+    author: "No author",
+    genre: "Unknown",
     countInStock: 0,
     numReviews: 0,
-    description: "Sample description",
+    description: "No description",
   });
 
   const createdBook = await book.save();

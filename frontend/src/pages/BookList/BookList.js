@@ -102,10 +102,10 @@ const BookList = () => {
                     </button>
                   </Link>
                   <button
-                    className="btn btn-danger btn-sm"
+                    className="btn btn-danger btn-sm ms-2"
                     onClick={() => deleteHandler(book._id)}
                   >
-                    <i className="fas fa-trash" />
+                    <i className="fas fa-trash color-red" />
                   </button>
                 </td>
               </tr>
