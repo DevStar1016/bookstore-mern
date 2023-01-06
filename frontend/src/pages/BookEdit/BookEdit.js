@@ -6,7 +6,10 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import FormContainer from "../../components/FormContainer/FormContainer";
 import { listBookDetails, updateBook } from "../../actions/bookActions";
-import { BOOK_CREATE_RESET } from "../../constants/bookConstants";
+import {
+  BOOK_CREATE_RESET,
+  BOOK_UPDATE_RESET,
+} from "../../constants/bookConstants";
 import "./BookEdit.css";
 
 const BookEdit = () => {
@@ -36,7 +39,7 @@ const BookEdit = () => {
 
   useEffect(() => {
     if (successUpdate) {
-      dispatch({ type: BOOK_CREATE_RESET });
+      dispatch({ type: BOOK_UPDATE_RESET });
       navigate("/admin/booklist");
     } else {
       if (!book.name || book._id !== id) {
@@ -96,7 +99,7 @@ const BookEdit = () => {
 
   return (
     <>
-      <Link className="btn back-btn" to="/admin/userlist">
+      <Link className="btn back-btn" to="/admin/booklist">
         Go Back
       </Link>
       <FormContainer>

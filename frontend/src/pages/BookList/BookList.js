@@ -10,7 +10,6 @@ import "./BookList.css";
 const BookList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const bookList = useSelector((state) => state.bookList);
   const { loading, error, books } = bookList;
