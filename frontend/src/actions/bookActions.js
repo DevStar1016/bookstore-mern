@@ -15,6 +15,9 @@ import {
   BOOK_UPDATE_REQUEST,
   BOOK_UPDATE_SUCCESS,
   BOOK_UPDATE_FAIL,
+  BOOK_CREATE_REVIEW_REQUEST,
+  BOOK_CREATE_REVIEW_SUCCESS,
+  BOOK_CREATE_REVIEW_FAIL,
 } from "../constants/bookConstants";
 
 export const listBooks = () => async (dispatch) => {
@@ -135,3 +138,35 @@ export const updateBook = (book) => async (dispatch, getState) => {
     });
   }
 };
+
+export const createBookReview =
+  (bookId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: BOOK_CREATE_REVIEW_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      await axios.post(`/api/books/${bookId}/reviews`, review, config);
+
+      dispatch({ type: BOOK_CREATE_REVIEW_SUCCESS });
+    } catch (error) {
+      dispatch({
+        type: BOOK_CREATE_REVIEW_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
