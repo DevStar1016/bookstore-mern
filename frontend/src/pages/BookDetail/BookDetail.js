@@ -122,15 +122,18 @@ const BookDetail = () => {
               {book.reviews.length === 0 && <Message>No reviews</Message>}
               <div className="list-group">
                 {book.reviews.map((review) => (
-                  <div className="list-group-item bg-color" key={review.name}>
+                  <div
+                    className="list-group-item bg-color border-secondary rounded-0"
+                    key={review.name}
+                  >
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
                   </div>
                 ))}
-                <div className="list-group-item bg-color">
-                  <h2>Write a Customer Review</h2>
+                <div className="list-group-item bg-color mt-3 border-top border-secondary rounded-0">
+                  <h2>Write a Review</h2>
                   {errorBookReview && (
                     <Message variant="alert-danger">{errorBookReview}</Message>
                   )}
@@ -163,7 +166,8 @@ const BookDetail = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></textarea>
                       </div>
-                      <button type="submit" className="btn btn-success">
+
+                      <button type="submit" className="btn btn-review-submit">
                         Submit
                       </button>
                     </form>
