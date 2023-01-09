@@ -163,7 +163,7 @@ const BookDetail = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></textarea>
                       </div>
-                      <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-success">
                         Submit
                       </button>
                     </form>
