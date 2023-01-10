@@ -30,6 +30,7 @@ const App = () => {
             <Route path="/admin/user/:id/edit" element={<UserEdit />} />
             <Route path="/admin/booklist" element={<BookList />} />
             <Route path="/admin/book/:id/edit" element={<BookEdit />} />
+            <Route path="/search/:keyword" element={<Home />} />
             <Route path="/" element={<Home />} exact />
           </Routes>
         </main>

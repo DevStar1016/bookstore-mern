@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/userActions";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -16,6 +17,9 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
+        <li className="search-bar">
+          <SearchBar />
+        </li>
         <li>
           <Link to="/cart">
             <i className="fa-sharp fa-solid fa-cart-shopping cart-icon mt-2 me-3" />
