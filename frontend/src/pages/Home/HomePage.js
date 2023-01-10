@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Book from "../../components/Book/Book";
 import Message from "../../components/Message/Message";
@@ -7,14 +8,16 @@ import { listBooks } from "../../actions/bookActions";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const { keyword } = useParams();
+
   const dispatch = useDispatch();
 
   const bookList = useSelector((state) => state.bookList);
   const { loading, error, books } = bookList;
 
   useEffect(() => {
-    dispatch(listBooks());
-  }, [dispatch]);
+    dispatch(listBooks(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <div className="home">

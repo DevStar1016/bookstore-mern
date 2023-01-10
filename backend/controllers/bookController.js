@@ -5,7 +5,16 @@ const { Book } = require("../models/bookModel");
 // @route   GET /api/books
 // @access  Public
 const getBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find({});
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const books = await Book.find({ ...keyword });
 
   res.json(books);
 });

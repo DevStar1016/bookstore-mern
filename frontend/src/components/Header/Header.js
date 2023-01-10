@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
 import Navbar from "./Navbar";
+
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
         <Link to="/">
           <i className="fa-solid fa-book-open"></i>
         </Link>
+        
       </div>
       <Navbar />
     </header>
