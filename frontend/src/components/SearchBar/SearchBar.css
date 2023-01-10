@@ -4,3 +4,13 @@
   display: flex;
   width: 55%;
 }
+.search-btn {
+  background-color: #0e5540;
+  color: #faeddf;
+  font-weight: 600;
+}
+
+.search-btn:hover {
+  background-color: #faeddf;
+  border: 2px solid #0e5540;
+}
