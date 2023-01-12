@@ -1,16 +1,22 @@
 .search-bar {
+  width: 55%;
+  height: 43px;
   position: absolute;
   left: 59px;
   display: flex;
-  width: 55%;
 }
+
 .search-btn {
+  width: 120px;
+  height: 42px;
   background-color: #0e5540;
   color: #faeddf;
   font-weight: 600;
 }
 
 .search-btn:hover {
+  width: 120px;
+  height: 42px;
   background-color: #faeddf;
   border: 2px solid #0e5540;
 }
