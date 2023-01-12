@@ -1,26 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./Paginate.css";
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
     pages > 1 && (
-      <ul className="pagination">
-        {[...Array(pages).keys()].map((x) => (
-          <Link
-            key={x + 1}
-            to={
-              !isAdmin
-                ? keyword
-                  ? `/search/${keyword}/page/${x + 1}`
-                  : `/page/${x + 1}`
-                : `/admin/booklist/${x + 1}`
-            }
-            active={x + 1 === page}
-          >
-            <li className="page-item">{x + 1}</li>
-          </Link>
-        ))}
-      </ul>
+      <nav className="paginate">
+        <ul className="pagination">
+          {[...Array(pages).keys()].map((x) => (
+            <li className="page-item" key={x + 1}>
+              <NavLink
+                to={
+                  !isAdmin
+                    ? keyword
+                      ? `/search/${keyword}/page/${x + 1}`
+                      : `/page/${x + 1}`
+                    : `/admin/booklist/${x + 1}`
+                }
+                className="page-link"
+              >
+                {x + 1}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
     )
   );
 };
