@@ -5,6 +5,9 @@ const { Book } = require("../models/bookModel");
 // @route   GET /api/books
 // @access  Public
 const getBooks = asyncHandler(async (req, res) => {
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+
   const keyword = req.query.keyword
     ? {
         name: {
@@ -14,9 +17,12 @@ const getBooks = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const books = await Book.find({ ...keyword });
+  const count = await Book.countDocuments({ ...keyword });
+  const books = await Book.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
 
-  res.json(books);
+  res.json({ books, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @desc    Fetch single book

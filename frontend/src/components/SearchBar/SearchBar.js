@@ -24,7 +24,7 @@ const SearchBar = () => {
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search Book..."
       />
-      <button type="submit" className="btn btn-success p-2">
+      <button type="submit" className="btn search-btn p-2">
         Search
       </button>
     </form>

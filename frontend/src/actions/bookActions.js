@@ -21,12 +21,14 @@ import {
 } from "../constants/bookConstants";
 
 export const listBooks =
-  (keyword = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: BOOK_LIST_REQUEST });
 
-      const { data } = await axios.get(`/api/books?keyword=${keyword}`);
+      const { data } = await axios.get(
+        `/api/books?keyword=${keyword}&pageNumber=${pageNumber}`
+      );
 
       dispatch({ type: BOOK_LIST_SUCCESS, payload: data });
     } catch (error) {
