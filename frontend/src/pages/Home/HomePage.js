@@ -4,20 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import Book from "../../components/Book/Book";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
+import Paginate from "../../components/Paginate/Paginate";
 import { listBooks } from "../../actions/bookActions";
 import "./HomePage.css";
 
 const HomePage = () => {
   const { keyword } = useParams();
+  const { pageNumber } = useParams() || 1;
 
   const dispatch = useDispatch();
 
   const bookList = useSelector((state) => state.bookList);
-  const { loading, error, books } = bookList;
+  const { loading, error, books, page, pages } = bookList;
 
   useEffect(() => {
-    dispatch(listBooks(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listBooks(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   return (
     <div className="home">
@@ -30,11 +32,18 @@ const HomePage = () => {
       ) : error ? (
         <Message variant="alert-danger">{error}</Message>
       ) : (
-        <div className="books">
-          {books.map((book) => (
-            <Book key={book._id} book={book} />
-          ))}
-        </div>
+        <>
+          <div className="books">
+            {books.map((book) => (
+              <Book key={book._id} book={book} />
+            ))}
+          </div>
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ""}
+          />
+        </>
       )}
     </div>
   );
