@@ -8,7 +8,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
       <nav className="paginate">
         <ul className="pagination">
           {[...Array(pages).keys()].map((x) => (
-            <li className="page-item" key={x + 1}>
+            <li className="page-item " key={x + 1}>
               <NavLink
                 to={
                   !isAdmin
