@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import CheckoutSteps from "../../components/CheckoutSteps/CheckoutSteps";
+import { createOrder } from "../../actions/orderActions";
 import "./PlaceOrder.css";
 
 const PlaceOrder = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cart = useSelector((state) => state.cart);
 
   // Calculate prices
@@ -24,8 +28,28 @@ const PlaceOrder = () => {
     Number(cart.taxPrice)
   ).toFixed(2);
 
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      navigate(`/order/${order._id}`);
+    }
+    // eslint-disable-next-line
+  }, [navigate, success]);
+
   const placeOrderHandler = () => {
-    console.log("submit");
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    );
   };
 
   return (
@@ -38,8 +62,9 @@ const PlaceOrder = () => {
               <h2>Shipping</h2>
               <p>
                 <strong>Address: </strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city},
-                {cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+                {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
+                {cart.shippingAddress.postalCode},{" "}
+                {cart.shippingAddress.country}
               </p>
             </div>
             <div className="list-group-item pt-4">
@@ -106,6 +131,9 @@ const PlaceOrder = () => {
                   <div className="col">Total</div>
                   <div className="col">${cart.totalPrice}</div>
                 </div>
+              </div>
+              <div className="list-group item bg-color">
+                {error && <Message variant={"alert-danger"}>{error}</Message>}
               </div>
               <div className="list-group-item bg-color">
                 <button
