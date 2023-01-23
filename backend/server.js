@@ -7,6 +7,7 @@ const { connectDB } = require("./config/db");
 
 const bookRoutes = require("./routes/bookRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 
 dotenv.config();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/books", bookRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 
 const dirname = path.resolve();
