@@ -15,3 +15,7 @@
 .order-btn:hover {
   border: 2px solid #0e5540;
 }
+
+.green-bg {
+  background-color: #0e5540;
+}
