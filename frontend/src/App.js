@@ -8,6 +8,7 @@ import Cart from "./pages/Cart/Cart";
 import Shipping from "./pages/Shipping/Shipping";
 import Payment from "./pages/Payment/Payment";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import Order from "./pages/Order/Order";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
@@ -23,6 +24,7 @@ const App = () => {
         <Header />
         <main>
           <Routes>
+            <Route path="/order/:id" element={<Order />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/placeorder" element={<PlaceOrder />} />

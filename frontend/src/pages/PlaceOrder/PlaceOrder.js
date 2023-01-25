@@ -67,11 +67,13 @@ const PlaceOrder = () => {
                 {cart.shippingAddress.country}
               </p>
             </div>
+            <hr />
             <div className="list-group-item pt-4">
               <h2>Payment Method</h2>
               <strong>Method: </strong>
               {cart.paymentMethod}
             </div>
+            <hr />
             <div className="list-group-item pt-4">
               <h2>Order Items</h2>
               {cart.cartItems.length === 0 ? (
