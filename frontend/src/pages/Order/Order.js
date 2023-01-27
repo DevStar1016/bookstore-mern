@@ -1,26 +1,39 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
-import { getOrderDetails, payOrder } from "../../actions/orderActions";
-import { ORDER_PAY_RESET } from "../../constants/orderConstants";
+import {
+  getOrderDetails,
+  payOrder,
+  deliverOrder,
+} from "../../actions/orderActions";
+import {
+  ORDER_PAY_RESET,
+  ORDER_DELIVER_RESET,
+} from "../../constants/orderConstants";
 import "./Order.css";
 
 const Order = () => {
   const { id } = useParams();
+  
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const [sdkReady, setSdkReady] = useState(false);
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay } = orderPay;
+
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   if (!loading) {
     // Calculate price
@@ -34,6 +47,10 @@ const Order = () => {
   }
 
   useEffect(() => {
+    if (!userInfo) {
+      navigate("/login");
+    }
+
     if (!order || order._id !== id) {
       const addPaypalScript = async () => {
         const { data: clientId } = await axios.get("/api/config/paypal");
@@ -41,25 +58,26 @@ const Order = () => {
         script.type = "text/javascript";
         script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
         script.async = true;
-        script.onload = () => {
-          setSdkReady(true);
-        };
+        script.onload = true;
 
         document.body.appendChild(script);
       };
 
-      if (!order || successPay) {
+      if (!order || successPay || successDeliver || order._id !== id) {
         dispatch({ type: ORDER_PAY_RESET });
+        dispatch({ type: ORDER_DELIVER_RESET });
         dispatch(getOrderDetails(id));
       } else if (!order.isPaid) {
         if (!window.paypal) {
           addPaypalScript();
-        } else {
-          setSdkReady(true);
         }
       }
     }
-  }, [order, dispatch, id, successPay]);
+  }, [order, dispatch, id, successPay, successDeliver, navigate, userInfo]);
+
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order));
+  };
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -181,16 +199,27 @@ const Order = () => {
                 {!order.isPaid && (
                   <div className="list-group-item bg-color">
                     {loadingPay && <Loader />}
-                    {!sdkReady ? (
-                      <Loader />
-                    ) : (
-                      <PayPalButton
-                        amount={order.totalPrice}
-                        onSuccess={successPaymentHandler}
-                      />
-                    )}
+
+                    <PayPalButton
+                      amount={order.totalPrice}
+                      onSuccess={successPaymentHandler}
+                    />
                   </div>
                 )}
+                {loadingDeliver && <Loader />}
+                {userInfo &&
+                  userInfo.isAdmin &&
+                  order.isPaid &&
+                  !order.isDelivered && (
+                    <div className="list-group-item bg-color">
+                      <button
+                        className="btn order-btn"
+                        onClick={deliverHandler}
+                      >
+                        Mark As Delivered
+                      </button>
+                    </div>
+                  )}
               </div>
             </div>
           </div>
