@@ -5,7 +5,7 @@ const { Book } = require("../models/bookModel");
 // @route   GET /api/books
 // @access  Public
 const getBooks = asyncHandler(async (req, res) => {
-  const pageSize = 8;
+  const pageSize = 10;
   const page = Number(req.query.pageNumber) || 1;
 
   const keyword = req.query.keyword
@@ -142,6 +142,15 @@ const createBookReview = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get top rated books
+// @route   POST /api/books/top
+// @access  Public
+const getTopBooks = asyncHandler(async (req, res) => {
+  const books = await Book.find({}).sort({ rating: -1 }).limit(4);
+
+  res.json(books);
+});
+
 module.exports = {
   getBooks,
   getBookById,
@@ -149,4 +158,5 @@ module.exports = {
   createBook,
   updateBook,
   createBookReview,
+  getTopBooks,
 };

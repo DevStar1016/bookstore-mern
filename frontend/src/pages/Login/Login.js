@@ -15,16 +15,16 @@ const Login = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(login(email, password));
-  };
-
   useEffect(() => {
     if (userInfo) {
       navigate("/");
     }
   }, [navigate, userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
 
   return (
     <FormContainer>

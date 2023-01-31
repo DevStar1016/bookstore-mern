@@ -1,0 +1,21 @@
+.order {
+  width: 100%;
+  padding: 120px 40px 0;
+}
+
+.green-bg {
+  background-color: #0e5540;
+}
+
+.order-btn {
+  width: 100%;
+  height: 45px;
+  background-color: #0e5540;
+  color: #faeddf;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.order-btn:hover {
+  border: 2px solid #0e5540;
+}
