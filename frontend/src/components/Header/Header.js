@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ImBooks } from "react-icons/im";
 import Navbar from "./Navbar";
-
 import "./Header.css";
 
 const Header = () => {
@@ -9,9 +9,8 @@ const Header = () => {
     <header>
       <div className="website-logo">
         <Link to="/">
-          <i className="fa-solid fa-book-open"></i>
+          <ImBooks size="40px" />
         </Link>
-        
       </div>
       <Navbar />
     </header>
