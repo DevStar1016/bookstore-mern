@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
@@ -15,6 +16,8 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+app.use(cors());
 
 // log request
 app.use(morgan("dev"));
