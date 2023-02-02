@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ import "./Order.css";
 
 const Order = () => {
   const { id } = useParams();
-  
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -51,26 +51,24 @@ const Order = () => {
       navigate("/login");
     }
 
-    if (!order || order._id !== id) {
-      const addPaypalScript = async () => {
-        const { data: clientId } = await axios.get("/api/config/paypal");
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-        script.async = true;
-        script.onload = true;
+    const addPaypalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.async = true;
+      script.onload = true;
 
-        document.body.appendChild(script);
-      };
+      document.body.appendChild(script);
+    };
 
-      if (!order || successPay || successDeliver || order._id !== id) {
-        dispatch({ type: ORDER_PAY_RESET });
-        dispatch({ type: ORDER_DELIVER_RESET });
-        dispatch(getOrderDetails(id));
-      } else if (!order.isPaid) {
-        if (!window.paypal) {
-          addPaypalScript();
-        }
+    if (!order || successPay || successDeliver || order._id !== id) {
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
+      dispatch(getOrderDetails(id));
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPaypalScript();
       }
     }
   }, [order, dispatch, id, successPay, successDeliver, navigate, userInfo]);
