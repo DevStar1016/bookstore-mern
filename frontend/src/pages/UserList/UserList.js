@@ -56,7 +56,12 @@ const UserList = () => {
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>
-                  <Link href={`mailto:${user.email}`}>{user.email}</Link>
+                  <Link
+                    style={{ background: "none" }}
+                    href={`mailto:${user.email}`}
+                  >
+                    {user.email}
+                  </Link>
                 </td>
                 <td>
                   {user.isAdmin ? (

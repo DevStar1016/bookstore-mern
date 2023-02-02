@@ -173,7 +173,10 @@ const BookDetail = () => {
                     </form>
                   ) : (
                     <Message>
-                      Please <Link to="/login">sign in</Link>
+                      Please{" "}
+                      <Link style={{ background: "none" }} to="/login">
+                        sign in
+                      </Link>{" "}
                       to write a review
                     </Message>
                   )}
