@@ -53,7 +53,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="row profile">
+    <div className="row profile" style={{ paddingTop: "100px" }}>
       <div className="col-md-3 m-5 pt-5">
         {message && <Message variant="alert-danger">{message}</Message>}
         {error && <Message variant="alert-danger">{error}</Message>}
