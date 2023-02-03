@@ -90,7 +90,7 @@ const BookList = () => {
         <>
           <table className="table table-bordered table-striped table-hover table-responsive table-sm">
             <thead>
-              <tr>
+              <tr className="text-center">
                 <th>ID</th>
                 <th>NAME</th>
                 <th>AUTHOR</th>
@@ -100,7 +100,7 @@ const BookList = () => {
             </thead>
             <tbody>
               {books.map((book) => (
-                <tr key={book._id}>
+                <tr key={book._id} className="text-center">
                   <td>{book._id}</td>
                   <td>{book.name}</td>
                   <td>{book.author}</td>

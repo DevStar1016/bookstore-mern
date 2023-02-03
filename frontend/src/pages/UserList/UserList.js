@@ -42,7 +42,7 @@ const UserList = () => {
       ) : (
         <table className="table table-bordered table-striped table-hover table-responsive table-sm">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
@@ -52,7 +52,7 @@ const UserList = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id}>
+              <tr key={user._id} className="text-center">
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>
@@ -63,11 +63,17 @@ const UserList = () => {
                     {user.email}
                   </Link>
                 </td>
-                <td>
+                <td className="text-center">
                   {user.isAdmin ? (
-                    <i className="fas fa-check" style={{ color: "green" }} />
+                    <i
+                      className="fas fa-check"
+                      style={{ color: "green", background: "none" }}
+                    />
                   ) : (
-                    <i className="fas fa-times" style={{ color: "red" }} />
+                    <i
+                      className="fas fa-times"
+                      style={{ color: "red", background: "none" }}
+                    />
                   )}
                 </td>
                 <td>

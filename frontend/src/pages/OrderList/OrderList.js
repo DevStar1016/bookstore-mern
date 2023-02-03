@@ -33,7 +33,7 @@ const OrderList = () => {
       ) : (
         <table className="table table-bordered table-striped table-hover table-responsive table-sm">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>ID</th>
               <th>USER</th>
               <th>DATE</th>
@@ -41,12 +41,11 @@ const OrderList = () => {
               <th>PAID</th>
               <th>DELIVERED</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id}>
+              <tr key={order._id} className="text-center">
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
