@@ -105,7 +105,7 @@ const Cart = () => {
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Thanh toán
+                CHECKOUT
               </button>
             </div>
           </div>
